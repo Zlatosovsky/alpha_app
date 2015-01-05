@@ -5,13 +5,18 @@ describe "Static pages" do
   describe "Home page" do
 
     it "should have the content 'Home'" do
-        visit '/static_pages/home'
-       expect(page).to have_content('Home')
+      visit '/static_pages/home'
+      expect(page).to have_content('Home')
     end
 
-    it "Should have the right title" do
-    	visit '/static_pages/home'
-    	expect(page).to have_title('Ruby on Rails Tutorial Sample App | Home')
+    it "should have the base title" do
+      visit '/static_pages/home'
+      expect(page).to have_title("Ruby on Rails Tutorial Sample App")
+    end
+
+    it "should not have a custom page title" do
+      visit '/static_pages/home'
+      expect(page).not_to have_title('| Home')
     end
 
   end
